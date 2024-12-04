@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrácia a Prihlásenie</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+<header>
+  <div class="header-container">
+    <h1>Bezlepkový e-shop</h1>
+    <button class="hamburger" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="menu-container">
+      <ul class="menu">
+        <li><a href="index.php">Domov</a></li>
+        <li><a href="add_product.php">Produkty</a></li>
+        <li class="dropdown">
+          <a href="add_product.php" class="dropbtn">Kategórie</a>
+          <div class="dropdown-content">
+            <a href="add_product.php">Chleby</a>
+            <a href="add_product.php">Múky</a>
+            <a href="add_product.php">Sladkosti</a>
+            <a href="add_product.php">Cestoviny</a>
+          </div>
+        </li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="login.html">Prihlásenie</a></li>
+        <li><a href="contact.html">Kontakt</a></li>
+        <li><a href="card.html" class="cart-link">Košík (<span id="cart-count">0</span>)</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="form-container">
+  <!-- Formulár na prihlásenie -->
+  <div class="login-form">
+    <h2>Prihlásenie</h2>
+    <form action="phpp.php" method="POST">
+      <input type="email" name="email" placeholder="E-mail" required>
+      <input type="password" name="password" placeholder="Heslo" required>
+      <button type="submit">Prihlásiť sa</button>
+    </form>
+  </div>
+
+  <!-- Formulár na registráciu -->
+  <div class="registration-form">
+    <h2>Registrácia</h2>
+    <form action="php.php" method="POST" id="registration-form">
+      <label for="username">Používateľské meno:</label>
+      <input type="text" id="username" name="username" required>
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" name="email" required>
+      <label for="password">Heslo:</label>
+      <input type="password" id="password" name="password" required>
+      <label for="confirm-password">Potvrďte heslo:</label>
+      <input type="password" id="confirm-password" name="confirm-password" required>
+      <button type="submit">Registrovať</button>
+    </form>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-section">
+      <h4>O nás</h4>
+      <p>Bezlepkový e-shop prináša kvalitné produkty pre ľudí s intoleranciou na lepok.</p>
+    </div>
+    <div class="footer-section">
+      <h4>Kontakt</h4>
+      <p>Email: <a href="mailto:info@bezlepkovyeshop.sk">info@bezlepkovyeshop.sk</a></p>
+      <p>Tel: <a href="tel:+421123456789">+421 123 456 789</a></p>
+    </div>
+    <div class="footer-section">
+      <h4>Sledujte nás</h4>
+      <p>
+        <a href="#" class="social-link"><i class="fab fa-facebook"></i> Facebook</a> |
+        <a href="#" class="social-link"><i class="fab fa-instagram"></i> Instagram</a>
+      </p>
+    </div>
+  </div>
+  <p>&copy; 2023 Bezlepkový e-shop. Všetky práva vyhradené.</p>
+</footer>
+<script>
+  const hamburger = document.querySelector('.hamburger');
+  const menuContainer = document.querySelector('.menu-container');
+
+  hamburger.addEventListener('click', () => {
+    menuContainer.classList.toggle('active');
+  });
+</script>
+<script src="script.js"></script>
+</body>
+</html>

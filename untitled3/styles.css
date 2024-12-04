@@ -1,0 +1,901 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.header-container {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2.3rem;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: auto;
+}
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 2px;
+}
+
+.menu-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.menu li {
+    position: relative;
+}
+
+.menu a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    color: #000;
+    min-width: 150px;
+    border-radius: 5px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    text-align: left;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 10px;
+    display: block;
+    text-decoration: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #f4f4f4;
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .menu-container {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #333;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        z-index: 1000;
+    }
+
+    .menu-container.active {
+        display: flex;
+    }
+
+    .menu {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .menu li {
+        margin: 10px 0;
+    }
+
+    .menu a {
+        padding: 15px;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .carousel {
+        height: 300px;
+    }
+
+    .carousel-caption h2 {
+        font-size: 24px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-section {
+        margin: 10px 0;
+        width: 100%;
+    }
+
+    .review-card {
+        flex: 0 0 100%;
+    }
+
+    .product-card {
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 1024px) {
+    .review-card {
+        flex: 0 0 calc(33.333% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel {
+        height: 200px;
+    }
+
+    .carousel-caption h2 {
+        font-size: 20px;
+    }
+
+    .carousel-btn {
+        font-size: 16px;
+        padding: 8px 15px;
+    }
+
+    .review-card {
+        flex: 0 0 100%;
+    }
+}
+
+@media (max-width: 360px) {
+    .carousel {
+        height: 150px;
+    }
+
+    .carousel-btn {
+        font-size: 14px;
+    }
+}
+
+.produ {
+    padding-top: 30px;
+}
+
+.carousel {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 430px;
+}
+
+.carousel-slide {
+    display: none;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.carousel-caption h2 {
+    font-size: 48px;
+    margin-bottom: 15px;
+    color: #FFD700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.carousel-btn {
+    display: inline-block;
+    background: linear-gradient(45deg, #007BFF, #0056b3);
+    text-decoration: none;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.carousel-btn:hover {
+    transform: translateY(-5px);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: #333;
+}
+
+.product-section {
+    padding: 30px;
+    text-align: center;
+    margin-left: 11%;
+    margin-right: 10%;
+}
+
+.product-section h2 {
+    margin-top: 50px;
+    margin-bottom: 45px;
+    font-size: 38px;
+}
+
+.product-grid {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto; /* Povolenie horizontálneho skrolovania */
+    padding-bottom: 20px; /* Pre vytvorenie priestoru pre scrollbar */
+    scrollbar-width: thin; /* Nastaví šírku scrollbar */
+    scrollbar-color: #888 #f1f1f1; /* Nastaví farbu scrollbar */
+}
+
+.product-grid::-webkit-scrollbar {
+    height: 8px; /* Nastaví výšku scrollbar */
+}
+
+.product-grid::-webkit-scrollbar-thumb {
+    background-color: #888; /* Farba posuvníka */
+    border-radius: 10px;
+}
+
+.product-grid::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Farba pozadia scrollbar */
+}
+
+.product-card {
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+    flex: 0 0 250px; /* Každý produkt má pevnú šírku */
+    box-sizing: border-box;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+.product-card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.product-card h3 {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.product-card p {
+    font-size: 18px;
+    color: #333;
+}
+
+.add-to-cart-btn,
+.view-details-btn {
+    margin: 10px 5px;
+    padding: 10px 15px;
+    border: none;
+    background-color: #ff6f61;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-to-cart-btn:hover,
+.view-details-btn:hover {
+    background-color: #FFD700;
+}
+
+/* Responzívne nastavenie */
+@media (max-width: 1024px) {
+    .product-card {
+        flex: 0 0 33.333%; /* Na menších obrazovkách sa produkty zobrazia v 3 stĺpcoch */
+    }
+}
+
+@media (max-width: 768px) {
+    .product-card {
+        flex: 0 0 50%; /* Na ešte menších obrazovkách budú 2 produkty vedľa seba */
+    }
+}
+
+@media (max-width: 480px) {
+    .product-card {
+        flex: 0 0 100%; /* Na veľmi malých obrazovkách bude každý produkt na samostatnom riadku */
+    }
+}
+
+.add-to-cart-btn,
+.view-details-btn {
+    margin: 10px 5px;
+    padding: 10px 15px;
+    border: none;
+    background-color: #FFD700;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-to-cart-btn:hover,
+.view-details-btn:hover {
+    background-color: #FFD700;
+}
+
+/* Recenzie */
+.reviews-section {
+    padding: 40px 15px;
+    text-align: center;
+}
+
+.reviews-section h2 {
+    font-size: 38px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Flexbox pre zoznam recenzií s horizontálnym posúvaním */
+.reviews-list {
+    display: flex;
+    flex-wrap: nowrap; /* Karty budú v riadku, nezalomí sa */
+    gap: 20px; /* Medzera medzi kartami */
+    overflow-x: auto; /* Povolenie horizontálneho posúvania */
+    padding-bottom: 20px; /* Pre vytvorenie priestoru pre scrollbar */
+    scrollbar-width: thin; /* Upraví šírku scrollbar */
+    scrollbar-color: #888 #f1f1f1; /* Nastaví farbu scrollbar */
+}
+
+.reviews-list::-webkit-scrollbar {
+    height: 8px; /* Nastaví výšku scrollbar */
+}
+
+.reviews-list::-webkit-scrollbar-thumb {
+    background-color: #888; /* Farba posuvníka */
+    border-radius: 10px;
+}
+
+.reviews-list::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Farba pozadia scrollbar */
+}
+
+/* Každá karta recenzie */
+.review-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s ease-in-out;
+    flex: 0 0 calc(25% - 20px); /* Každá karta bude mať šírku 1/4 z rodičovskej šírky (4 karty vedľa seba) */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Efekt pri hover na kartu */
+.review-card:hover {
+    transform: scale(1.05);
+}
+
+/* Text recenzie */
+.review-card h3 {
+    font-size: 20px;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.review-card p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Obrázky v recenziách (pre autora recenzie) */
+.review-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.review-card .rating {
+    color: #f39c12;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+/* Responzívne nastavenie */
+@media (max-width: 1024px) {
+    .review-card {
+        flex: 0 0 calc(33.333% - 20px); /* Na menších obrazovkách budú 3 karty vedľa seba */
+    }
+}
+
+@media (max-width: 768px) {
+    .review-card {
+        flex: 0 0 calc(50% - 20px); /* Na ešte menších obrazovkách budú 2 karty vedľa seba */
+    }
+}
+
+@media (max-width: 480px) {
+    .review-card {
+        flex: 0 0 100%; /* Na veľmi malých obrazovkách budú karty po jednej */
+    }
+}
+/* Footer */
+footer {
+    background-color: #333;
+    color: #ecf0f1;
+    text-align: center;
+    padding: 30px 15px;
+    font-size: 16px;
+    margin-top: 40px;
+    border-top: 2px solid #34495e;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    gap: 20px;
+}
+
+.footer-section {
+    margin: 15px;
+    max-width: 300px;
+    min-width: 220px;
+}
+
+footer h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #ecf0f1;
+    font-weight: bold;
+}
+
+footer a {
+    color: #ecf0f1;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: #3498db;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.social-link i {
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+.social-link .fa-facebook {
+    color: #333;
+}
+
+.social-link .fa-instagram {
+    color: #e1306c;
+}
+
+footer p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+footer p:last-of-type {
+    margin-top: 20px;
+}
+
+/* Responzívne úpravy */
+@media (max-width: 768px) {
+    .review-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .review-card {
+        max-width: 350px;
+    }
+
+    footer {
+        padding: 25px 15px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-section {
+        margin: 10px 0;
+    }
+
+    .social-link {
+        justify-content: center;
+    }
+
+    .social-link i {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .review-card {
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    .review-card h3 {
+        font-size: 18px;
+    }
+
+    .review-card p {
+        font-size: 14px;
+    }
+
+    footer {
+        padding: 20px 10px;
+        font-size: 14px;
+    }
+
+    .footer-container {
+        align-items: center;
+        gap: 20px;
+    }
+
+    .footer-section {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .social-link {
+        justify-content: center;
+    }
+
+    .social-link i {
+        font-size: 20px;
+        margin: 0 5px;
+    }
+}/* Základné štýly pre vyskakovací banner */
+.newsletter-popup {
+    display: none; /* Skrytý banner */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Polopriehľadné pozadie */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.popup-content h2 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.popup-content p {
+    margin-bottom: 20px;
+}
+
+#newsletterForm input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#newsletterForm button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+#newsletterForm button:hover {
+    background-color: #555;
+}
+
+.close-btn {
+    background-color: transparent;
+    color: #333;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+.close-btn:hover {
+    color: #f44336;
+}
+
+/* Štýly pre responzívnosť */
+@media (max-width: 768px) {
+    .popup-content {
+        width: 90%;
+    }
+}
+/* Hlavný banner */
+.black-friday-banner {
+    background: linear-gradient(180deg, #ff0000, #ff8000); /* Vertikálny gradient */
+    color: #fff;
+    width: 150px;
+    height: 750px;
+    position: absolute;
+    left: 0;
+    transform: translateY(-50%);
+    border-radius: 0 10px 10px 0;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Skrytie efektov mimo oblasti */
+    margin-top: 38%;
+}
+
+/* Obsah bannera */
+.black-friday-banner .banner-content h1 {
+    font-size: 22px;
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.black-friday-banner .banner-content p {
+    font-size: 18px;
+    margin: 15px 0;
+}
+
+.black-friday-banner .banner-content p span {
+    font-size: 26px;
+    font-weight: bold;
+    color: #ffe600;
+}
+
+.black-friday-banner .banner-content .small-text {
+    font-size: 14px;
+    color: #ffecb3; /* Svetlá žltá */
+    margin-top: 10px;
+}
+
+.black-friday-banner button {
+    background-color: #ffe600;
+    color: #000;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.black-friday-banner button:hover {
+    background-color: #ffcc00;
+    transform: scale(1.1); /* Zvýraznenie tlačidla */
+}
+
+/* Animované hviezdičky */
+.animated-stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: url('https://path-to-your-stars-image.png'); /* Pridať hviezdičky ako obrázok alebo SVG */
+    background-size: contain;
+    animation: moveStars 3s linear infinite;
+    opacity: 0.7; /* Jemné pozadie */
+}
+
+@keyframes moveStars {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 0 100%;
+    }
+}
+
+/* Efekt lesku */
+.shiny-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    transform: rotate(45deg);
+    animation: shine 5s linear infinite;
+}
+
+@keyframes shine {
+    from {
+        transform: translate(-150%, -150%);
+    }
+    to {
+        transform: translate(150%, 150%);
+    }
+}
+
+/* Skrytie banneru na menších obrazovkách */
+@media (max-width: 768px) {
+    .black-friday-banner {
+        display: none; /* Skryť banner na malých obrazovkách */
+    }
+
+    .products-container {
+        flex-direction: column; /* Produkty na celý stĺpec */
+    }
+}
+/* Sekcia článkov */
+.articles-section {
+    padding: 50px 20px;
+    background: #f8f9fa;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+}
+
+.articles-section h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.articles-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.article-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 250px;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.article-card:hover {
+    transform: scale(1.05);
+}
+
+.article-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.article-content {
+    padding: 20px;
+}
+
+.article-content h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+.article-content p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.read-more {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.read-more:hover {
+    background: #0056b3;
+}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administrátorské prostredie</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    .container {
+      margin: 20px;
+    }
+    .logout-btn {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #ff4d4d;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    .success-message {
+      color: green;
+    }
+    .error-message {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Administrátorské prostredie</h1>
+
+  <!-- Správa používateľov -->
+  <h2>Správa používateľov:</h2>
+  <form action="admin.php" method="POST">
+    <label for="username">Meno:</label>
+    <input type="text" name="username" id="username" required><br>
+    <label for="email">E-mail:</label>
+    <input type="email" name="email" id="email" required><br>
+    <label for="password">Heslo:</label>
+    <input type="password" name="password" id="password" required><br>
+    <input type="submit" name="add_user" value="Pridať používateľa">
+  </form>
+
+  <!-- Zoznam používateľov -->
+  <?php if (!empty($users)): ?>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Meno</th>
+      <th>E-mail</th>
+      <th>Akcie</th>
+    </tr>
+    <?php foreach ($users as $user): ?>
+    <tr>
+      <td><?= htmlspecialchars($user['id']) ?></td>
+      <td><?= htmlspecialchars($user['username']) ?></td>
+      <td><?= htmlspecialchars($user['email']) ?></td>
+      <td>
+        <form action="admin.php" method="POST" style="display:inline;">
+          <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
+          <input type="submit" name="delete_user" value="Vymazať">
+        </form>
+      </td>
+    </tr>
+    <?php endforeach; ?>
+  </table>
+  <?php else: ?>
+  <p>Žiadni používatelia v databáze.</p>
+  <?php endif; ?>
+
+  <!-- Pridanie produktu -->
+  <h2>Pridanie produktu:</h2>
+  <form action="admin.php" method="POST">
+    <label for="name">Názov:</label>
+    <input type="text" name="name" id="name" required><br>
+    <label for="category">Kategória:</label>
+    <input type="text" name="category" id="category" required><br>
+    <label for="price">Cena (€):</label>
+    <input type="number" name="price" id="price" step="0.01" required><br>
+    <label for="rating">Hodnotenie:</label>
+    <input type="number" name="rating" id="rating" min="1" max="5"><br>
+    <label for="availability">Dostupnosť:</label>
+    <select name="availability" id="availability">
+      <option value="in-stock">Na sklade</option>
+      <option value="out-of-stock">Vypredané</option>
+    </select><br>
+    <label for="brand">Značka:</label>
+    <input type="text" name="brand" id="brand" required><br>
+    <input type="submit" name="add_product" value="Pridať produkt">
+  </form>
+
+  <!-- Zoznam produktov -->
+  <?php if (!empty($products)): ?>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Názov</th>
+      <th>Kategória</th>
+      <th>Cena</th>
+      <th>Hodnotenie</th>
+      <th>Dostupnosť</th>
+      <th>Značka</th>
+      <th>Akcie</th>
+    </tr>
+    <?php foreach ($products as $product): ?>
+    <tr>
+      <td><?= htmlspecialchars($product['id']) ?></td>
+      <td><?= htmlspecialchars($product['name']) ?></td>
+      <td><?= htmlspecialchars($product['category']) ?></td>
+      <td><?= htmlspecialchars($product['price']) ?> €</td>
+      <td><?= htmlspecialchars($product['rating']) ?></td>
+      <td><?= $product['availability'] === 'in-stock' ? 'Na sklade' : 'Vypredané' ?></td>
+      <td><?= htmlspecialchars($product['brand']) ?></td>
+      <td>
+        <form action="admin.php" method="POST" style="display:inline;">
+          <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+          <input type="submit" name="delete_product" value="Vymazať">
+        </form>
+      </td>
+    </tr>
+    <?php endforeach; ?>
+  </table>
+  <?php else: ?>
+  <p>Žiadne produkty v databáze.</p>
+  <?php endif; ?>
+</div>
+
+<a href="logout.php" class="logout-btn">Odhlásiť sa</a>
+
+</body>
+</html>

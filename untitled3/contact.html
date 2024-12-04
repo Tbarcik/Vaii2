@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Kontakt</title>
+  <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+<header>
+  <div class="header-container">
+    <h1>Bezlepkový e-shop</h1>
+    <button class="hamburger" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <!-- Navigácia -->
+    <nav class="menu-container">
+      <ul class="menu">
+        <li><a href="index.php">Domov</a></li>
+        <li><a href="add_product.php">Produkty</a></li>
+        <li class="dropdown">
+          <a href="add_product.php" class="dropbtn">Kategórie</a>
+          <div class="dropdown-content">
+            <a href="add_product.php">Chleby</a>
+            <a href="add_product.php">Múky</a>
+            <a href="add_product.php">Sladkosti</a>
+            <a href="add_product.php">Cestoviny</a>
+          </div>
+        </li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="login.html">Prihlásenie</a></li>
+        <li><a href="contact.html">Kontakt</a></li>
+        <li><a href="card.html" class="cart-link">Košík (<span id="cart-count">0</span>)</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<section class="contact-section">
+  <div class="container">
+    <h1>Kontaktujte nás</h1>
+    <div class="contact-info">
+      <div class="contact-details">
+        <h2>Adresa</h2>
+        <p>1234 Ulica, Mesto, Štát</p>
+
+        <h2>Telefón</h2>
+        <p>+421 123 456 789</p>
+
+        <h2>Email</h2>
+        <p>info@firma.sk</p>
+      </div>
+
+      <div class="contact-form">
+        <h2>Formulár pre kontakt</h2>
+        <form action="#" method="POST">
+          <div class="form-group">
+            <label for="name">Meno</label>
+            <input type="text" id="name" name="name" placeholder="Zadajte svoje meno" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Zadajte svoj email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Správa</label>
+            <textarea id="message" name="message" placeholder="Napíšte nám správu" required></textarea>
+          </div>
+
+          <button type="submit">Odoslať</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="map">
+      <h2>Naša lokalita</h2>
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d229224.43882293066!2d19.51060243335025!3d48.14815233239409!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476f9cbb9f40bc41%3A0x400d573705ce7c0!2zVGFyY2FpcywgR3Jhdm93YWRhLCBRcmltZXM!5e0!3m2!1sen!2ssk!4v1593187190666!5m2!1sen!2ssk" width="100%" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-container">
+    <p>&copy; 2024 Firma | Všetky práva vyhradené</p>
+  </div>
+</footer>
+</body>
+</html>

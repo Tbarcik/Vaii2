@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Filtrácia Produktov</title>
+  <link rel="stylesheet" href="product.css">
+</head>
+<body>
+<header>
+  <div class="header-container">
+    <h1>Bezlepkový e-shop</h1>
+    <button class="hamburger" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="menu-container">
+      <ul class="menu">
+        <li><a href="index.php">Domov</a></li>
+        <li><a href="add_product.php">Produkty</a></li>
+        <li class="dropdown">
+          <a href="add_product.php" class="dropbtn">Kategórie</a>
+          <div class="dropdown-content">
+            <a href="add_product.php">Chleby</a>
+            <a href="add_product.php">Múky</a>
+            <a href="add_product.php">Sladkosti</a>
+            <a href="add_product.php">Cestoviny</a>
+          </div>
+        </li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="login.html">Prihlásenie</a></li>
+
+        <li><a href="contact.html">Kontakt</a></li>
+        <li><a href="card.html" class="cart-link">Košík (<span id="cart-count">0</span>)</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<div class="filters">
+  <select id="category">
+    <option value="all">Všetky Kategórie</option>
+    <option value="electronics">Elektronika</option>
+    <option value="clothing">Oblečenie</option>
+    <option value="home">Domácnosť</option>
+  </select>
+
+  <label for="price">Cena do:</label>
+  <input type="range" id="price" min="0" max="2000" step="10" value="2000">
+  <span id="price-value">2000 €</span>
+
+  <select id="rating">
+    <option value="all">Všetky hodnotenia</option>
+    <option value="1">1 ★ a viac</option>
+    <option value="2">2 ★ a viac</option>
+    <option value="3">3 ★ a viac</option>
+    <option value="4">4 ★ a viac</option>
+    <option value="5">5 ★</option>
+  </select>
+
+  <select id="availability">
+    <option value="all">Všetka dostupnosť</option>
+    <option value="in-stock">Na sklade</option>
+    <option value="out-of-stock">Vypredané</option>
+  </select>
+
+  <select id="brand">
+    <option value="all">Všetky značky</option>
+    <option value="nike">Nike</option>
+    <option value="apple">Apple</option>
+    <option value="samsung">Samsung</option>
+  </select>
+</div>
+
+<div id="product-list" class="product-list">
+</div>
+
+<script src="product.js"></script>
+
+</body>
+</html>
